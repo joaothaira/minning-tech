@@ -1,0 +1,117 @@
+# Anexo — Referências consolidadas
+
+> Bibliografia do estudo. As referências **comentadas, por tema**, estão no fim de cada módulo. Aqui estão: (1) obras de base, (2) a lista completa e automática de todas as URLs citadas no estudo (com acesso em 29/10/2026).
+> Para regenerar a lista 2 depois de editar os módulos, rode no diretório raiz:
+> `grep -ohE 'https?://[^ )>]+' *.md anexos/tabela-empresas.md anexos/linha-do-tempo.md | sed 's/[.,;]$//' | sort -u`
+
+## 1. Obras de base (livros, artigos, relatórios)
+
+- Gupta, C. K.; Krishnamurthy, N. (2005). *Extractive Metallurgy of Rare Earths*. CRC Press.
+- Xie, F.; Zhang, T. A.; Dreisinger, D.; Doyle, F. (2014). "A critical review on solvent extraction of rare earths from aqueous solutions". *Minerals Engineering*, 56, 10–28.
+- Borst, A. M. et al. (2020). "Adsorption of rare earth elements in regolith-hosted clay deposits". *Nature Communications*, 11, 4386.
+- Sagawa, M. et al. (1984). "New material for permanent magnets on a base of Nd and Fe". *Journal of Applied Physics*, 55, 2083.
+- IEA (2024–2026). *Rare Earth Elements: Pathways to secure and diversified supply chains* e *Global Critical Minerals Outlook 2026*.
+- USGS (2026). *Mineral Commodity Summaries 2026: Rare Earths*.
+- JORC (2012). *Australasian Code for Reporting of Exploration Results, Mineral Resources and Ore Reserves*.
+- Brasil. Lei 15.506/2026 (Política Nacional de Minerais Críticos e Estratégicos); Lei 13.540/2017 (CFEM); Lei 14.066/2020 (Barragens); Decreto-Lei 227/1967 (Código de Mineração).
+- Fitzpatrick, R. (2013). *The Mom Test*.
+- Blank, S.; Dorf, B. (2012). *The Startup Owner's Manual*.
+
+## 2. Todas as URLs citadas no estudo
+
+- https://agenciabrasil.ebc.com.br/economia/noticia/2025-06/bndes-e-finep-selecionam-56-projetos-para-minerais-estrategicos
+- https://agmetalminer.com/2026/07/21/aclara-rare-earth-metals/
+- https://announcements.asx.com.au/asxpdf/20260826/pdf/0737nx07s3tnf7.pdf
+- https://araxa.mg.gov.br/noticia/8767/projeto-araxa-amplia-em-75-estimativa-de-terras-raras-no-municipio
+- https://brasilmineral.com.br/noticias/inova-mineracao-esta-com-inscricoes-abertas
+- https://brasilmineral.com.br/revistas/460/cit-senai-itr-avanca-na-integracao-da-cadeia-brasileira-de-imas-de-terras-raras
+- https://cidadeseminerais.com.br/mineradoras/suspensao-exploracao-terras-raras/
+- https://clarim.net.br/cbmm-projeta-r-13-bilhoes-em-investimentos-e-explica-impasse-sobre-terras-raras-em-araxa/
+- https://colitco.com/st-george-mining-lodges-environmental-approvals/
+- https://conjur.com.br/2026-out-14/terras-raras-bases-historicas-e-geopoliticas-da-lei-15-506-2026/
+- https://crsreports.congress.gov/
+- https://econosur.org/companies/brazil/meteoric-resources/
+- https://empregandobrasil.com.br/salarios/engenheiro-metalurgico-producao-de-metais/
+- https://erp-recycling.org/news-and-events/2026/02/critical-raw-materials-act-commission-proposes-new-circularity-rules-for-magnets-in-eee/
+- https://farmonaut.com/mining/usgs-mineral-commodity-summaries-rare-earths-reserves-by-country
+- https://finance.yahoo.com/markets/commodities/articles/china-rare-earth-export-pause-123614106.html
+- https://finance.yahoo.com/markets/stocks/articles/usa-rare-earth-usar-acquired-183037654.html
+- https://geoscan.com.br/startups-na-mineracao/
+- https://globaltradealert.org/state-act/95168-china-temporary-suspension-of-additional-export-controls-for-rare-earth-related-technologies
+- https://ibram.org.br/noticia/mining-innovation-summit-2026-liderancas/
+- https://iea.blob.core.windows.net/assets/88d2b060-4c5b-46cc-8727-c60576cb937d/RareearthelementsPathwaystosecureanddiversifiedsupplychains.pdf
+- https://investingnews.com/apple-mp-materials-rare-earths/
+- https://investors.usare.com/news-releases/news-release-details/usa-rare-earth-announces-definitive-agreement-acquire-serra
+- https://kalkine.com.au/news/announcements/meteoric-resources-advances-caldeira-rare-earth-project-licensing-with-federal-agency-endorsements-and-december-quarter-2026-li-target
+- https://kalkinemedia.com/au/stocks/rare-earth-minerals/why-is-lynas-asxlyc-buying-meteoric-resources
+- https://kpmg.com/br/pt/insights/2026/01/elementos-terras-raras-america-do-sul.html
+- https://marketxls.com/etfs/setm/holdings
+- https://mininghub.com.br/m-connect-desafios/
+- https://mininghub.com.br/m-start/
+- https://mpmaterials.com/news/mp-materials-announces-transformational-public-private-partnership-with-the-department-of-defense-to-accelerate-u-s-rare-earth-magnet-independence/
+- https://pocosja.com.br/noticia/economia/2025/11/26/viridis-contesta-apontamentos-do-mpf-e-reafirma-viabilidade-tecnica-do-projeto-em-pocos/
+- https://rareearthexchanges.com/rare-earth-prices/
+- https://responsiblemining.net/
+- https://revistaminerios.com.br/terras-raras-no-brasil-principais-reservas/
+- https://source.benchmarkminerals.com/article/ex-china-ndpr-prices-slip-below-110-kg-price-floor-as-oversupply-builds
+- https://stockanalysis.com/etf/remx/holdings
+- https://stockhead.com.au/resources/why-asx-investors-are-backing-juniors-in-brazils-rare-earths-scene/
+- https://www.berkeleyside.org/2026/10/05/kobold-metals-berkeley
+- https://www.brasil247.com/negocios/bndes-negocia-financiamento-para-projeto-de-r-26-bilhoes-de-terras-raras-em-minas
+- https://www.brasilmineral.com.br/noticias/viridis-entra-com-pedido-de-li-para-o-projeto-colossus-de-us-356-milhoes
+- https://www.brasilmineral.com.br/noticias/viridis-obtem-licenca-previa-para-o-projeto-colossus-em-minas-gerais
+- https://www.cbinsights.com/company/earth-ai/financials
+- https://www.cfr.org/reports/dismantling-chinas-supply-chain-weapon
+- https://www.china-briefing.com/news/chinas-rare-earth-export-controls-impacts-on-businesses/
+- https://www.clarkhill.com/news-events/news/china-hits-pause-on-rare-earth-export-controls-and-what-it-means-for-supply-chains/
+- https://www.deeplearning.ai/the-batch/how-kobold-metals-uses-ai-to-find-rare-earth-minerals
+- https://www.digitimes.com/news/a20260724PD208/budget-2026-equipment-supply-chain-revenue.html
+- https://www.fdd.org/analysis/2025/11/12/china-pauses-some-rare-earth-export-curbs-while-retaining-levers-of-control/
+- https://www.fiemg.com.br/fiemg/noticias/kick-off-reune-28-empresas-e-marca-o-inicio-de-uma-iniciativa-nacional-com-investimento-de-r-73-milhoes-para-consolidar-a-cadeia-produtiva-de-imas-permanentes/
+- https://www.fiemg.com.br/regional-centro-oeste/noticias/viridis-entrega-lote-de-terras-raras-produzido-em-pocos-de-caldas-ao-cit-senai-itr/
+- https://www.fortunebusinessinsights.com/mining-software-market-116898
+- https://www.futurebridge.com/software-defined-mining-the-next-competitive-advantage-for-mining-leaders/
+- https://www.giiresearch.com/report/tbrc2133598-digital-twin-mining-global-market-report.html
+- https://www.globenewswire.com/news-release/2026/08/19/3347592/0/en/brazilian-rare-earths-scoping-study-results.html
+- https://www.globenewswire.com/news-release/2026/10/28/3390156/0/en/evolution-metals-technologies-confirms-delivery-of-all-57-ulvac-equipment-containers-to-pohang-expansion-site-with-commissioning-under-way-at-the-largest-expected-high-performance-.html
+- https://www.gov.br/anm/
+- https://www.gov.br/cnen/pt-br
+- https://www.iea.org/commentaries/with-new-export-controls-on-critical-minerals-supply-concentration-risks-become-reality
+- https://www.iea.org/policies/21338-eu-rules-on-end-of-life-vehicles
+- https://www.iea.org/reports/global-critical-minerals-outlook-2026/outlook
+- https://www.iea.org/reports/rare-earth-elements/executive-summary
+- https://www.investing.com/news/company-news/usa-rare-earth-secures-155b-funding-for-serra-verde-deal-93CH-4873197
+- https://www.jorc.org/
+- https://www.machadomeyer.com.br/pt/inteligencia-juridica/publicacoes-ij/infraestrutura-e-energia-ij/sancionada-a-lei-que-institui-a-politica-nacional-de-minerais-criticos-e-estrategicos
+- https://www.marketscreener.com/news/usa-rare-earth-completes-acquisition-of-serra-verde-ce785bdad188f02c
+- https://www.mayerbrown.com/pt/insights/publications/2026/09/law-no-155062026-enacted-national-policy-on-critical-and-strategic-minerals
+- https://www.metal.com/rare-earth-oxides/201102250162
+- https://www.middle.news/articles/2026/09/01/st-george-mining-advances-pilot-plant-test-work-at-arax-project
+- https://www.migalhas.com.br/depeso/465310/minerais-criticos-e-estrategicos-lei-15-506-26-e-o-decreto-13-118-26
+- https://www.mining-technology.com/news/lynas-to-buy-meteoric-resources-674m/
+- https://www.mining-technology.com/projects/carina-rare-earth-project-brazil/
+- https://www.mining.com/aclara-inaugurates-heavy-rare-earths-pilot-plant-in-brazil/
+- https://www.mining.com/china-to-suspend-new-ree-export-controls-for-1-year
+- https://www.miningweekly.com/article/caldeira-rare-earths-project-brazil-update-2026-07-31
+- https://www.miningweekly.com/article/viridis-secures-more-than-full-equity-requirement-to-advance-colossus-project-2026-08-20
+- https://www.noticiasdemineracao.com/empresas/news-articles/4522533/codemig-cbmm-incluem-terras-raras-em-acordo-niobio
+- https://www.numerando.com.br/salarios/engenheiro-de-minas
+- https://www.oecd.org/
+- https://www.osc.ca/
+- https://www.planalto.gov.br/ccivil_03/_ato2015-2018/2017/lei/l13540.htm
+- https://www.planalto.gov.br/ccivil_03/_ato2019-2022/2020/lei/l14066.htm
+- https://www.portalrcd.com/post/hub-de-minera%C3%A7%C3%A3o-lan%C3%A7a-programa-de-inova%C3%A7%C3%A3o-aberta-para-o-segmento-mineral-na-bahia
+- https://www.proactiveinvestors.com/companies/news/1097159/brazilian-rare-earths-resets-rocha-da-rocha-study-around-monte-alto-with-us-6-billion-npv-1097159.html
+- https://www.proactiveinvestors.com/companies/news/1100201/axel-ree-accelerates-caldas-exploration-in-brazil-after-project-review-1100201.html
+- https://www.salario.com.br/profissao/engenheiro-de-minas-cbo-214705
+- https://www.salario.com.br/profissao/engenheiro-metalurgista-cbo-214610/
+- https://www.salario.com.br/profissao/engenheiro-quimico-mineracao-cbo-214515/
+- https://www.salario.com.br/profissao/tecnologo-metalurgista-cbo-214615/
+- https://www.serraverde.com/2026/02/serra-verde-secures-us565-million-financing-from-us-international-development-finance-corporation/
+- https://www.sociedademilitar.com.br/2026/05/minerais-criticos-e-terras-raras-estao-na-pauta-de-encontro-entre-lula-e-trump-nos-eua-presidente-norte-americano-quer-garantir-acordo-ainda-em-2026-fbnc.html
+- https://www.techtimes.com/articles/328903/20261013/chinas-october-industrial-doctrine-formalizes-rare-earth-leverage-eu-secured-managed-access.htm
+- https://www.tipranks.com/etf/ch:remx/holdings
+- https://www.tipranks.com/news/company-announcements/usa-rare-earth-shareholders-approve-merger-related-share-issuance
+- https://www.triangulomineiro.com/noticia/cbmm-e-australiana-st-george-disputam-area-mineral-em-araxa-na-justica-08fe69
+- https://www.usgs.gov/centers/national-minerals-information-center/rare-earths-statistics-and-information
+- https://www12.senado.leg.br/noticias/materias/2026/09/17/sancionada-politica-nacional-de-minerais-criticos-e-estrategicos

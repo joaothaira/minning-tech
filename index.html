@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Terras Raras & MiningTech — Estudo</title>
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+<style>
+  :root {
+    --bg: #fbfaf7; --fg: #1f2328; --muted: #6a737d; --line: #e4e1da;
+    --side: #f3f1ec; --accent: #b4532a; --accent-soft: #f6e7df; --code: #f0eee8;
+  }
+  body.dark {
+    --bg: #16181c; --fg: #e6e6e6; --muted: #9aa0a6; --line: #2c3037;
+    --side: #1d2025; --accent: #e3895f; --accent-soft: #3a2a22; --code: #23262c;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; height: 100%; }
+  body { background: var(--bg); color: var(--fg); font: 17px/1.65 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; display: flex; }
+
+  #progress { position: fixed; top: 0; left: 0; height: 3px; background: var(--accent); width: 0; z-index: 10; transition: width .1s; }
+
+  aside { width: 300px; flex-shrink: 0; height: 100vh; overflow-y: auto; background: var(--side); border-right: 1px solid var(--line); padding: 20px 16px; position: sticky; top: 0; }
+  aside h1 { font-size: 17px; margin: 0 0 4px; }
+  aside .sub { color: var(--muted); font-size: 13px; margin-bottom: 14px; }
+  #search { width: 100%; padding: 8px 10px; border: 1px solid var(--line); border-radius: 8px; background: var(--bg); color: var(--fg); font-size: 14px; }
+  .overall { font-size: 13px; color: var(--muted); margin: 12px 0 6px; }
+  .bar { height: 6px; background: var(--line); border-radius: 3px; overflow: hidden; margin-bottom: 14px; }
+  .bar > div { height: 100%; background: var(--accent); width: 0; transition: width .3s; }
+  nav .group { font-size: 11px; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); margin: 16px 6px 6px; }
+  nav a { display: flex; align-items: center; gap: 8px; padding: 6px 8px; border-radius: 6px; color: var(--fg); text-decoration: none; font-size: 14px; }
+  nav a:hover { background: var(--accent-soft); }
+  nav a.active { background: var(--accent); color: #fff; }
+  nav a .check { width: 16px; text-align: center; font-size: 12px; opacity: .8; }
+  nav a .num { color: var(--muted); font-variant-numeric: tabular-nums; width: 20px; }
+  nav a.active .num { color: #fff; }
+  #results a { display: block; padding: 6px 8px; font-size: 13px; color: var(--fg); text-decoration: none; border-radius: 6px; }
+  #results a:hover { background: var(--accent-soft); }
+  #results small { color: var(--muted); display: block; }
+  #results mark { background: var(--accent-soft); color: inherit; }
+  .tools { margin-top: 18px; display: flex; gap: 8px; }
+  .tools button { flex: 1; }
+
+  button { cursor: pointer; border: 1px solid var(--line); background: var(--bg); color: var(--fg); border-radius: 8px; padding: 7px 10px; font-size: 13px; }
+  button:hover { border-color: var(--accent); }
+  button.primary { background: var(--accent); border-color: var(--accent); color: #fff; }
+
+  main { flex: 1; min-width: 0; display: flex; justify-content: center; }
+  .wrap { display: flex; gap: 32px; max-width: 1200px; width: 100%; padding: 32px 40px 80px; }
+  article { flex: 1; min-width: 0; max-width: 820px; }
+  #toc { width: 220px; flex-shrink: 0; position: sticky; top: 24px; align-self: flex-start; max-height: calc(100vh - 48px); overflow-y: auto; font-size: 13px; }
+  #toc .t { font-size: 11px; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); margin-bottom: 8px; }
+  #toc a { display: block; color: var(--muted); text-decoration: none; padding: 3px 0 3px 10px; border-left: 2px solid var(--line); }
+  #toc a.h3 { padding-left: 22px; }
+  #toc a.on { color: var(--accent); border-left-color: var(--accent); }
+
+  article h1 { font-size: 2em; line-height: 1.2; margin-top: 0; }
+  article h2 { margin-top: 2em; padding-bottom: .3em; border-bottom: 1px solid var(--line); }
+  article h3 { margin-top: 1.6em; }
+  article a { color: var(--accent); }
+  article blockquote { margin: 1.2em 0; padding: .6em 1em; background: var(--accent-soft); border-left: 4px solid var(--accent); border-radius: 0 8px 8px 0; }
+  article blockquote p { margin: .3em 0; }
+  article table { border-collapse: collapse; width: 100%; margin: 1.2em 0; font-size: 14.5px; display: block; overflow-x: auto; }
+  article th, article td { border: 1px solid var(--line); padding: 7px 10px; text-align: left; vertical-align: top; }
+  article th { background: var(--side); }
+  article tr:nth-child(even) td { background: color-mix(in srgb, var(--side) 45%, transparent); }
+  article code { background: var(--code); padding: .15em .4em; border-radius: 4px; font-size: .88em; }
+  article pre { background: var(--code); padding: 14px 16px; border-radius: 8px; overflow-x: auto; line-height: 1.4; }
+  article pre code { background: none; padding: 0; font-size: 13px; }
+  article hr { border: none; border-top: 1px solid var(--line); margin: 2em 0; }
+  article li input[type=checkbox] { margin-right: 6px; }
+
+  .pager { display: flex; justify-content: space-between; gap: 12px; margin-top: 48px; padding-top: 20px; border-top: 1px solid var(--line); }
+  .pager button { padding: 12px 16px; font-size: 14px; max-width: 48%; text-align: left; }
+  .pager button.next { text-align: right; margin-left: auto; }
+  .pager small { display: block; color: var(--muted); font-size: 12px; }
+  .readbtn { margin: 32px 0 0; }
+
+  .err { background: var(--accent-soft); padding: 20px; border-radius: 8px; }
+  #menu { display: none; position: fixed; top: 10px; left: 10px; z-index: 20; }
+
+  @media (max-width: 1100px) { #toc { display: none; } }
+  @media (max-width: 800px) {
+    aside { position: fixed; left: -310px; z-index: 15; transition: left .2s; }
+    aside.open { left: 0; box-shadow: 0 0 30px rgba(0,0,0,.25); }
+    #menu { display: block; }
+    .wrap { padding: 56px 18px 60px; }
+  }
+  @media print { aside, #toc, .pager, .readbtn, #progress, #menu { display: none !important; } }
+</style>
+</head>
+<body>
+<div id="progress"></div>
+<button id="menu" onclick="document.querySelector('aside').classList.toggle('open')">☰ Menu</button>
+
+<aside>
+  <h1>Terras Raras & MiningTech</h1>
+  <div class="sub">Estudo completo · dados de 29/10/2026</div>
+  <input id="search" type="search" placeholder="Buscar em todo o estudo… ( / )">
+  <div id="results"></div>
+  <div class="overall"><span id="readcount">0</span> de <span id="total">0</span> lidos</div>
+  <div class="bar"><div id="overallbar"></div></div>
+  <nav id="nav"></nav>
+  <div class="tools">
+    <button onclick="toggleDark()">◐ Tema</button>
+    <button onclick="resetRead()">↺ Zerar lidos</button>
+  </div>
+</aside>
+
+<main>
+  <div class="wrap">
+    <article id="content">Carregando…</article>
+    <div id="toc"></div>
+  </div>
+</main>
+
+<script>
+// Lista de arquivos (edite aqui se criar novos módulos)
+const DOCS = [
+  { group: 'Início' },
+  { file: 'README.md', num: '', title: 'Índice e guia de leitura' },
+  { file: '00-sumario-executivo.md', num: '00', title: 'Sumário executivo' },
+  { group: 'Base técnica' },
+  { file: '01-fundamentos.md', num: '01', title: 'Fundamentos' },
+  { file: '02-geologia-e-depositos.md', num: '02', title: 'Geologia e depósitos' },
+  { file: '03-processamento-e-cadeia.md', num: '03', title: 'Processamento e cadeia' },
+  { group: 'Mercado e Brasil' },
+  { file: '04-mercado-e-economia.md', num: '04', title: 'Mercado e economia' },
+  { file: '05-geopolitica-e-politicas.md', num: '05', title: 'Geopolítica e políticas' },
+  { file: '06-players-globais.md', num: '06', title: 'Players globais' },
+  { file: '07-brasil-em-profundidade.md', num: '07', title: 'Brasil em profundidade' },
+  { file: '08-regulacao-licenciamento-esg.md', num: '08', title: 'Regulação e ESG' },
+  { group: 'MiningTech e empreender' },
+  { file: '09-miningtech-panorama.md', num: '09', title: 'MiningTech: panorama' },
+  { file: '10-oportunidades-e-tese-de-startup.md', num: '10', title: 'Oportunidades e tese' },
+  { group: 'Investir, carreira e fechamento' },
+  { file: '11-investimento.md', num: '11', title: 'Investimento' },
+  { file: '12-carreira-e-salarios.md', num: '12', title: 'Carreira e salários' },
+  { file: '13-conclusao-e-roadmap.md', num: '13', title: 'Conclusão e roadmap' },
+  { group: 'Anexos' },
+  { file: 'anexos/tabela-empresas.md', num: 'A', title: 'Tabela de empresas' },
+  { file: 'anexos/linha-do-tempo.md', num: 'B', title: 'Linha do tempo' },
+  { file: 'anexos/glossario.md', num: 'C', title: 'Glossário' },
+  { file: 'anexos/fontes-para-acompanhar.md', num: 'D', title: 'Fontes para acompanhar' },
+  { file: 'anexos/referencias.md', num: 'E', title: 'Referências' },
+];
+const PAGES = DOCS.filter(d => d.file);
+const ROOT = new URL('.', location.href).href;
+const cache = {};
+let current = null;
+
+const readSet = () => new Set(JSON.parse(localStorage.getItem('tr-read') || '[]'));
+const saveRead = s => localStorage.setItem('tr-read', JSON.stringify([...s]));
+
+if (localStorage.getItem('tr-dark') === '1') document.body.classList.add('dark');
+function toggleDark() {
+  document.body.classList.toggle('dark');
+  localStorage.setItem('tr-dark', document.body.classList.contains('dark') ? '1' : '0');
+}
+function resetRead() { if (confirm('Zerar o progresso de leitura?')) { saveRead(new Set()); renderNav(); renderReadBtn(); } }
+
+function slug(text) {
+  return text.trim().toLowerCase()
+    .replace(/[^\p{L}\p{N}\s-]/gu, '')
+    .replace(/\s/g, '-');
+}
+
+async function load(file) {
+  if (cache[file] !== undefined) return cache[file];
+  const r = await fetch(file);
+  if (!r.ok) throw new Error(r.status + ' ' + file);
+  return cache[file] = await r.text();
+}
+
+function renderNav() {
+  const read = readSet();
+  const nav = document.getElementById('nav');
+  nav.innerHTML = DOCS.map(d => d.group
+    ? `<div class="group">${d.group}</div>`
+    : `<a href="#${d.file}" class="${d.file === current ? 'active' : ''}">
+         <span class="check">${read.has(d.file) ? '✓' : ''}</span>
+         <span class="num">${d.num}</span><span>${d.title}</span></a>`).join('');
+  const n = PAGES.filter(p => read.has(p.file)).length;
+  document.getElementById('readcount').textContent = n;
+  document.getElementById('total').textContent = PAGES.length;
+  document.getElementById('overallbar').style.width = (100 * n / PAGES.length) + '%';
+}
+
+function renderReadBtn() {
+  const box = document.getElementById('readbox');
+  if (!box) return;
+  const isRead = readSet().has(current);
+  box.innerHTML = `<button class="${isRead ? '' : 'primary'}" onclick="toggleRead()">${isRead ? '✓ Lido (desmarcar)' : 'Marcar como lido'}</button>`;
+}
+function toggleRead() {
+  const s = readSet();
+  s.has(current) ? s.delete(current) : s.add(current);
+  saveRead(s); renderNav(); renderReadBtn();
+}
+
+// Resolve um link relativo ao arquivo atual -> caminho relativo à raiz do estudo
+function resolve(href) {
+  const u = new URL(href, new URL(current, ROOT));
+  return { path: decodeURIComponent(u.pathname.slice(new URL(ROOT).pathname.length)), hash: u.hash.slice(1) };
+}
+
+async function show(file, anchor) {
+  const el = document.getElementById('content');
+  try {
+    const md = await load(file);
+    current = file;
+    el.innerHTML = marked.parse(md, { gfm: true });
+  } catch (e) {
+    el.innerHTML = `<div class="err"><h2>Não consegui ler os arquivos .md</h2>
+      <p>O navegador bloqueia a leitura de arquivos locais quando o HTML é aberto por duplo clique.
+      Abra um terminal na pasta do estudo e rode:</p>
+      <pre><code>cd /Volumes/server-ssd/minning-tech
+python3 -m http.server 8000</code></pre>
+      <p>Depois acesse <a href="http://localhost:8000">http://localhost:8000</a>.</p>
+      <p><small>Detalhe: ${e.message}</small></p></div>`;
+    return;
+  }
+
+  // ids nos títulos + sumário lateral
+  const used = {};
+  const toc = [];
+  el.querySelectorAll('h1,h2,h3').forEach(h => {
+    let id = slug(h.textContent);
+    if (used[id] !== undefined) id += '-' + (++used[id]); else used[id] = 0;
+    h.id = id;
+    if (h.tagName !== 'H1') toc.push(`<a href="#${file}::${id}" data-id="${id}" class="${h.tagName.toLowerCase()}">${h.textContent}</a>`);
+  });
+  document.getElementById('toc').innerHTML = toc.length ? `<div class="t">Nesta página</div>${toc.join('')}` : '';
+
+  // links: .md internos viram navegação; externos abrem em nova aba; âncoras locais
+  el.querySelectorAll('a[href]').forEach(a => {
+    const href = a.getAttribute('href');
+    if (/^https?:/.test(href)) { a.target = '_blank'; a.rel = 'noopener'; return; }
+    if (href.startsWith('#')) { a.href = `#${file}::${href.slice(1)}`; return; }
+    if (/\.md(#|$)/.test(href)) {
+      const { path, hash } = resolve(href);
+      a.href = '#' + path + (hash ? '::' + hash : '');
+    }
+  });
+
+  // botão "lido" + anterior/próximo
+  const i = PAGES.findIndex(p => p.file === file);
+  const prev = PAGES[i - 1], next = PAGES[i + 1];
+  el.insertAdjacentHTML('beforeend', `<div class="readbtn" id="readbox"></div>
+    <div class="pager">
+      ${prev ? `<button onclick="location.hash='${prev.file}'"><small>← Anterior</small>${prev.num ? prev.num + ' · ' : ''}${prev.title}</button>` : ''}
+      ${next ? `<button class="next" onclick="location.hash='${next.file}'"><small>Próximo →</small>${next.num ? next.num + ' · ' : ''}${next.title}</button>` : ''}
+    </div>`);
+
+  renderNav(); renderReadBtn();
+  document.title = (PAGES[i]?.title || file) + ' — Terras Raras';
+  document.querySelector('aside').classList.remove('open');
+
+  const target = anchor && document.getElementById(anchor);
+  if (target) target.scrollIntoView(); else window.scrollTo(0, 0);
+  onScroll();
+}
+
+function route() {
+  const raw = decodeURIComponent(location.hash.slice(1));
+  const [file, anchor] = raw.split('::');
+  const f = PAGES.some(p => p.file === file) ? file : 'README.md';
+  if (f === current && anchor) { document.getElementById(anchor)?.scrollIntoView({ behavior: 'smooth' }); return; }
+  show(f, anchor);
+}
+window.addEventListener('hashchange', route);
+
+// barra de progresso + destaque no sumário
+function onScroll() {
+  const h = document.documentElement;
+  const max = h.scrollHeight - h.clientHeight;
+  document.getElementById('progress').style.width = (max > 0 ? 100 * h.scrollTop / max : 0) + '%';
+  let on = null;
+  document.querySelectorAll('article h2, article h3').forEach(x => { if (x.getBoundingClientRect().top < 120) on = x.id; });
+  document.querySelectorAll('#toc a').forEach(a => a.classList.toggle('on', a.dataset.id === on));
+}
+window.addEventListener('scroll', onScroll, { passive: true });
+
+// busca em todos os arquivos
+const search = document.getElementById('search');
+let timer;
+search.addEventListener('input', () => { clearTimeout(timer); timer = setTimeout(doSearch, 200); });
+document.addEventListener('keydown', e => {
+  if (e.key === '/' && document.activeElement !== search) { e.preventDefault(); search.focus(); }
+  if (e.key === 'Escape') { search.value = ''; doSearch(); }
+  if (document.activeElement === search) return;
+  const i = PAGES.findIndex(p => p.file === current);
+  if (e.key === 'ArrowRight' && e.altKey && PAGES[i + 1]) location.hash = PAGES[i + 1].file;
+  if (e.key === 'ArrowLeft' && e.altKey && PAGES[i - 1]) location.hash = PAGES[i - 1].file;
+});
+async function doSearch() {
+  const q = search.value.trim().toLowerCase();
+  const box = document.getElementById('results');
+  if (q.length < 2) { box.innerHTML = ''; return; }
+  await Promise.all(PAGES.map(p => load(p.file).catch(() => '')));
+  const esc = s => s.replace(/[&<>]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;' }[c]));
+  const hits = [];
+  for (const p of PAGES) {
+    const text = cache[p.file] || '';
+    const lower = text.toLowerCase();
+    let idx = lower.indexOf(q), count = 0;
+    while (idx !== -1 && count < 3) {
+      const before = text.lastIndexOf('\n#', idx);
+      const head = before !== -1 ? text.slice(before + 1, text.indexOf('\n', before + 1)).replace(/^#+\s*/, '') : '';
+      const snip = text.slice(Math.max(0, idx - 40), idx + q.length + 50).replace(/[#*|`>\[\]]/g, '').replace(/\s+/g, ' ');
+      const m = esc(snip).replace(new RegExp(q.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'gi'), s => `<mark>${s}</mark>`);
+      hits.push(`<a href="#${p.file}${head ? '::' + slug(head) : ''}"><small>${p.num ? p.num + ' · ' : ''}${p.title}</small>…${m}…</a>`);
+      idx = lower.indexOf(q, idx + q.length); count++;
+    }
+  }
+  box.innerHTML = hits.length ? hits.slice(0, 30).join('') : '<small style="color:var(--muted);padding:6px 8px;display:block">Nada encontrado.</small>';
+}
+
+renderNav();
+route();
+</script>
+</body>
+</html>
